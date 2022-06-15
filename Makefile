@@ -1,5 +1,5 @@
 
-IMAGENAME="bitnoize/node-workspace"
+IMAGENAME="bitnoize/node-develop"
 
 .PHONY: help build push shell
 
@@ -8,32 +8,32 @@ IMAGENAME="bitnoize/node-workspace"
 help:
 	@echo "Makefile commands: build push shell"
 
-build: .build-node-18 .build-node-16
+build: .build-18-bullseye .build-16-bullseye
 
-.build-node-18:
+.build-18-bullseye:
 	docker build --pull --no-cache \
 		--build-arg NODE_VERSION=18-bullseye \
-		-t "$(IMAGENAME):node-18" \
+		-t "$(IMAGENAME):18-bullseye" \
 		-t "$(IMAGENAME):latest" \
 		.
 
-.build-node-16:
+.build-16-bullseye:
 	docker build --pull --no-cache \
 		--build-arg NODE_VERSION=16-bullseye \
-		-t "$(IMAGENAME):node-16" \
+		-t "$(IMAGENAME):16-bullseye" \
 		.
 
-push: .push-node-18 .push-node-16
+push: .push-18-bullseye .push-16-bullseye
 
-.push-node-18:
-	docker push "$(IMAGENAME):node-18"
+.push-18-bullseye:
+	docker push "$(IMAGENAME):18-bullseye"
 	docker push "$(IMAGENAME):latest"
 
-.push-node-16:
-	docker push "$(IMAGENAME):node-16"
+.push-16-bullseye:
+	docker push "$(IMAGENAME):16-bullseye"
 
 shell:
 	docker run -it --rm \
-		--name node-workspace-shell \
-		bitnoize/node-workspace:latest
+		--name node-develop-shell \
+		bitnoize/node-develop:latest
 
