@@ -6,10 +6,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN set -eux; \
     # NPM config
-    #npm config -g set registry http://registry.npmjs.org/; \
-    #npm config -g set fetch-retries 10; \
-    #npm config -g set fetch-retry-mintimeout 60000; \
-    #npm config -g set fetch-retry-maxtimeout 600000; \
+    npm config -g set fetch-retries 10; \
+    npm config -g set fetch-retry-mintimeout 60000; \
+    npm config -g set fetch-retry-maxtimeout 600000; \
     # GitHub
     echo "Package: *"         >> /etc/apt/preferences.d/90github-cli; \
     echo "Pin: release o=gh"  >> /etc/apt/preferences.d/90github-cli; \
