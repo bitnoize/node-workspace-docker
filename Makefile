@@ -1,5 +1,5 @@
 
-IMAGENAME="bitnoize/node-develop"
+IMAGENAME="bitnoize/node-workspace"
 
 .PHONY: help build push shell
 
@@ -34,6 +34,6 @@ push: .push-18-bullseye .push-16-bullseye
 
 shell:
 	docker run -it --rm \
-		--name node-develop-shell \
-		bitnoize/node-develop:latest
+		--name node-workspace-shell \
+		bitnoize/node-workspace:latest
 
