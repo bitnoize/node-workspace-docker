@@ -23,7 +23,10 @@ RUN set -eux; \
         socat openssh-client \
         fish curl links neovim \
         git gh \
-        tmux tmux-plugin-manager; \
+        tmux tmux-plugin-manager \
+        jq bat pup; \
+    # Bat
+    update-alternatives --install /usr/bin/bat bat /usr/bin/batcat 1; \
     # Change Shell
     usermod -s /usr/bin/fish node; \
     # Clean-up
@@ -37,7 +40,10 @@ RUN set -eux; \
     nvim -v; \
     git --version; \
     gh --version; \
-    tmux -V
+    tmux -V; \
+    jq -V; \
+    bat -V; \
+    pup --version
 
 WORKDIR /home/node
 VOLUME /home/node
